@@ -11,11 +11,12 @@ describe("Create User", () => {
   });
 
   it("deve criar um novo usuário", async () => {
-    await createUserUseCase.execute({
+    const user = await createUserUseCase.execute({
       name: "name",
       email: "email@email.com",
       password: "password",
     });
+    expect(user).toHaveProperty("id");
   });
 
   it("não dever criar um novo usuário quando ele já existe", async () => {
